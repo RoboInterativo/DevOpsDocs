@@ -43,7 +43,7 @@ docker run <image-name>
 //Eg: docker run nginx
 ```
 
-- We can also pass a complete `.env` file
+- Мы We can also pass a complete `.env` file
 
 ```bash
 --env-file <path-to-env-file>

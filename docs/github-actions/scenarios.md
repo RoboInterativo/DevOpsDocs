@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Senarios and Examples
+title: Scenarios and Examples
 description: A collection of scenarios and examples to help you get started with GitHub Actions.
 tags: ["GitHub Actions", "DevOps", "Continuous Integration", "Continuous Deployment"]
 keywords: ["GitHub Actions", "DevOps", "Continuous Integration", "Continuous Deployment"]
@@ -250,7 +250,7 @@ jobs:
           context: .
           push: true
         # This is format ghcr.io/{owner}/{repo}:{tag} and ghcr.io/{owner}/{repo}:latest, change it as per your requirement
-          tags: | 
+          tags: |
             ghcr.io/pradumnasaraf/devops:${{ steps.package-version.outputs.current-version}}
             ghcr.io/pradumnasaraf/devops:latest
           labels: ${{ steps.meta.outputs.labels }}

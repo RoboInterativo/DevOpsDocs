@@ -1,0 +1,103 @@
+=== argocd (en) ===
+docs/argocd
+docs/argocd/_category_.json
+docs/argocd/learning-resources.md
+docs/argocd/introduction.md
+docs/argocd/manifests
+docs/argocd/manifests/declarative.yml
+docs/argocd/other-resources.md
+=== argocd (ru) ===
+i18n/ru/docusaurus-plugin-content-docs/current/argocd
+i18n/ru/docusaurus-plugin-content-docs/current/argocd/_category_.json
+i18n/ru/docusaurus-plugin-content-docs/current/argocd/learning-resources.md
+i18n/ru/docusaurus-plugin-content-docs/current/argocd/introduction.md
+i18n/ru/docusaurus-plugin-content-docs/current/argocd/manifests
+i18n/ru/docusaurus-plugin-content-docs/current/argocd/manifests/declarative.yml
+i18n/ru/docusaurus-plugin-content-docs/current/argocd/other-resources.md
+=== learning/other resources ===
+./docs/kubernetes/learning-resources.md
+./docs/kubernetes/other-resources.md
+./docs/jenkins/learning-resources.md
+./docs/terraform/learning-resources.md
+./docs/github-actions/learning-resources.md
+./docs/github-actions/other-resources.md
+./docs/webassembly/learning-resources.md
+./docs/argocd/learning-resources.md
+./docs/argocd/other-resources.md
+./docs/networking/learning-resources.md
+./docs/docker/learning-resources.md
+./docs/docker/other-resources.md
+./docs/linux/learning-resources.md
+./docs/bash-scripting/learning-resources.md
+./docs/bash-scripting/other-resources.md
+./docs/helm/learning-resources.md
+./docs/prometheus/learning-resources.md
+./docs/gitops/learning-resources.md
+./docs/git/learning-resources.md
+./docs/yaml/learning-resources.md
+./docs/golang/learning-resources.md
+./docs/golang/other-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/kubernetes/learning-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/kubernetes/other-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/argocd/learning-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/argocd/other-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/docker/learning-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/docker/other-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/bash-scripting/learning-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/bash-scripting/other-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/helm/learning-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/prometheus/learning-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/gitops/learning-resources.md
+./i18n/ru/docusaurus-plugin-content-docs/current/yaml/learning-resources.md
+=== где ссылки ===
+docs/kubernetes/commands.md:222:- [Learning Resources](./learning-resources.md) - Continue with courses, docs, and longer tutorials.
+docs/kubernetes/introduction.md:1261:- [Learning Resources](./learning-resources.md) - Learn more about Kubernetes with these resources.
+docs/kubernetes/introduction.md:1262:- [Other Resources](./other-resources.md) - Explore more about Kubernetes with these resources.
+docs/jenkins/introduction.md:193:- [Learning Resources](./learning-resources.md) - Learn more about Jenkins with these resources.
+docs/terraform/commands.md:337:- [Learning Resources](./learning-resources.md) - Continue with official docs and deeper guides.
+docs/github-actions/introduction.md:291:- [Learning Resources](./learning-resources.md) - A list of resources to learn more about GitHub Actions.
+docs/github-actions/introduction.md:292:- [Other Resources](./other-resources.md) - A list of extra resources that you can use to learn more about GitHub Actions.
+docs/github-actions/scenarios.md:301:- [Learning Resources](./learning-resources.md) - Continue with official docs and longer tutorials.
+docs/github-actions/scenarios.md:302:- [Other Resources](./other-resources.md) - Browse reusable workflow files.
+docs/webassembly/tools.md:20:- [Learning Resources](./learning-resources.md) - Continue with official docs and curated references.
+docs/argocd/learning-resources.md:16:- [Other Resources](./other-resources.md) - Explore sample manifests and supporting material.
+docs/argocd/introduction.md:86:- [Learning Resources](./learning-resources.md) - Learn more about ArgoCD with these resources.
+docs/argocd/introduction.md:87:- [Other Resources](./other-resources.md) - Explore more about ArgoCD with these resources.
+docs/argocd/other-resources.md:17:- [Learning Resources](./learning-resources.md) - Continue learning with videos and guides.
+docs/networking/commands.md:54:- [Learning Resources](./learning-resources.md) - Continue with tutorials and networking references.
+docs/networking/introduction.md:69:- [Learning Resources](./learning-resources.md) - Learn more about Networking with these resources.
+docs/docker/commands.md:381:- [Learning Resources](./learning-resources.md) - Continue with courses and videos for deeper practice.
+docs/docker/commands.md:382:- [Other Resources](./other-resources.md) - Explore sample Dockerfiles and Compose files.
+docs/docker/introduction.md:281:- [Learning Resources](./learning-resources.md) - Learn more about Docker with these resources.
+docs/docker/introduction.md:282:- [Other Resources](./other-resources.md) - Explore more about Docker with these resources.
+docs/linux/commands.md:145:- [Learning Resources](./learning-resources.md) - Continue with Linux-focused videos and references.
+docs/linux/introduction.md:90:- [Learning Resources](./learning-resources.md) - Learn more about Linux with these resources.
+docs/bash-scripting/learning-resources.md:17:- [Other Resources](./other-resources.md) - Browse extra scripts and concept files.
+docs/bash-scripting/introduction.md:220:- [Learning Resources](./learning-resources.md) - Learn more about Bash Scripting with these resources.
+docs/bash-scripting/introduction.md:221:- [Other Resources](./other-resources.md) - Explore more about Bash Scripting with these resources.
+docs/bash-scripting/tools.md:19:- [Other Resources](./other-resources.md) - Explore extra scripts and concept files.
+docs/helm/introduction.md:136:- [Learning Resources](./learning-resources.md) - Learn more about Helm with these resources.
+docs/prometheus/introduction.md:40:- [Learning Resources](./learning-resources.md) - Learn more about Prometheus with these resources.
+docs/gitops/introduction.md:26:- [Learning Resources](./learning-resources.md) - Learn more about GitOps with these resources.
+docs/git/commands.md:458:- [Learning Resources](./learning-resources.md) - Continue with tutorials, docs, and practice tools.
+docs/git/introduction.md:22:- [Learning Resources](./learning-resources.md) - Learn more about Git with these resources.
+docs/yaml/introduction.md:149:- [Learning Resources](./learning-resources.md) - Learn more about YAML with these resources.
+docs/yaml/tools.md:20:- [Learning Resources](./learning-resources.md) - Continue with tutorials and reference material.
+docs/golang/learning-resources.md:22:- [Other Resources](./other-resources.md) - Browse more Go concepts and example apps.
+docs/golang/introduction.md:848:- [Learning Resources](./learning-resources.md) - Learn more about Golang with these resources.
+docs/golang/introduction.md:849:- [Other Resources](./other-resources.md) - A list of resources to learn more about Golang.
+docs/golang/other-resources.md:18:- [Learning Resources](./learning-resources.md) - Continue with official docs, tutorials, and practice sites.
+i18n/ru/docusaurus-plugin-content-docs/current/kubernetes/introduction.md:1237:- [Learning Resources](./learning-resources.md) - Learn more about Kubernetes with these resources.
+i18n/ru/docusaurus-plugin-content-docs/current/kubernetes/introduction.md:1238:- [Other Resources](./other-resources.md) - Explore more about Kubernetes with these resources.
+i18n/ru/docusaurus-plugin-content-docs/current/argocd/learning-resources.md:16:- [Other Resources](./other-resources.md) - Explore sample manifests and supporting material.
+i18n/ru/docusaurus-plugin-content-docs/current/argocd/introduction.md:86:- [Learning Resources](./learning-resources.md) - Learn more about ArgoCD with these resources.
+i18n/ru/docusaurus-plugin-content-docs/current/argocd/introduction.md:87:- [Other Resources](./other-resources.md) - Explore more about ArgoCD with these resources.
+i18n/ru/docusaurus-plugin-content-docs/current/argocd/other-resources.md:17:- [Learning Resources](./learning-resources.md) - Continue learning with videos and guides.
+i18n/ru/docusaurus-plugin-content-docs/current/docker/introduction.md:279:- [Learning Resources](./learning-resources.md) - Learn more about Docker with these resources.
+i18n/ru/docusaurus-plugin-content-docs/current/docker/introduction.md:280:- [Other Resources](./other-resources.md) - Explore more about Docker with these resources.
+i18n/ru/docusaurus-plugin-content-docs/current/bash-scripting/introduction.md:222:- [Learning Resources](./learning-resources.md) - Learn more about Bash Scripting with these resources.
+i18n/ru/docusaurus-plugin-content-docs/current/bash-scripting/introduction.md:223:- [Other Resources](./other-resources.md) - Explore more about Bash Scripting with these resources.
+i18n/ru/docusaurus-plugin-content-docs/current/helm/introduction.md:138:[Learning Resources](./learning-resources.md) - Узнайте больше о Helm с помощью этих ресурсов.
+i18n/ru/docusaurus-plugin-content-docs/current/prometheus/introduction.md:40:- [Learning Resources](./learning-resources.md) - Learn more about Prometheus with these resources.
+i18n/ru/docusaurus-plugin-content-docs/current/gitops/introduction.md:26:- [Learning Resources](./learning-resources.md) - Learn more about GitOps with these resources.
+i18n/ru/docusaurus-plugin-content-docs/current/yaml/introduction.md:156:- [Список обучающих ресурсов](./learning-resources.md) - Узнать больше о YAML на этих ресурсах.

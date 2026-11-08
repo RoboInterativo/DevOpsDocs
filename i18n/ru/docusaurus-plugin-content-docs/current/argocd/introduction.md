@@ -62,7 +62,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx-app # This is the name of the application
-  namespace: argocd 
+  namespace: argocd
 spec:
     destination:
         namespace: argocd # This is the namespace where the application will be deployed
@@ -83,5 +83,5 @@ spec:
 
 ### What's next?
 
-- [Learning Resources](./learning-resources.md) - Learn more about ArgoCD with these resources.
-- [Other Resources](./other-resources.md) - Explore more about ArgoCD with these resources.
+- [Learning Resources](learning-resources.md) - Learn more about ArgoCD with these resources.
+- [Other Resources](other-resources.md) - Explore more about ArgoCD with these resources.

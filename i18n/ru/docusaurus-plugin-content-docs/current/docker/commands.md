@@ -1,163 +1,163 @@
 ---
 sidebar_position: 3
 title: Docker Команды
-description: A collection of Docker commands to help you get started with Docker.
+description: Набор команд Docker, которые помогут вам начать работу с Docker.
 tags: ["Docker", "Containerization", "DevOps"]
 keywords: ["Docker", "Containerization", "DevOps"]
 slug: "/docker/commands"
 ---
 
-### Базовые команды Docker
+### Основы Docker
 
-- Для проверки версии docker
+- Проверка версии Docker
 
-```
+```bash
 docker version
 ```
 
-- Просмотр все доступны образов docker 1
+- Просмотр всех доступных образов
 
 ```bash
-docker images
+docker images test
 ```
 
-- Вытянуть/Загрузить образ из docker registry на локальную машину.
+- Загрузить образ из реестра на локальную машину.
 
 ```bash
 docker pull <image name>
-//Eg: docker pull nginx
+//Пример: docker pull nginx
 ```
 
-- To запуск an container (It will 1st pull the image if not present in the local sytem)
-  - NOTE: When we just provide the name of the image it will pull the latest one, i.e `nginx:latest`. We can also specify the version `nginx:1.14`
-  - Additioanly we can use flags
+- Запуск контейнера (если образа нет локально, он сначала будет загружен)
+  - ПРИМЕЧАНИЕ: если указать только имя образа, будет загружена последняя версия, то есть `nginx:latest`. Также можно указать конкретную версию, например `nginx:1.14`
+  - Дополнительно можно использовать флаги
 
-     - `--name <name> `- To give a name to the container.
-     - `-p <Host port:container port>`- To forward the port.
-     - `-d` - To run in detached mode
-     - `-it` - For interactive envirnoment
-     - `-e` - For environment variable
+     - `--name <name> `- задать имя контейнера.
+     - `-p <Host port:container port>`- пробросить порт.
+     - `-d` - запуск в фоновом режиме (detached mode)
+     - `-it` - для интерактивного окружения
+     - `-e` - для переменной окружения
 
 ```bash
 docker run <image-name>
-//Eg: docker run nginx
+//Пример: docker run nginx
 ```
 
-- We can also pass a complete `.env` file
+- Также можно передать целый файл `.env`
 
 ```bash
 --env-file <path-to-env-file>
-Eg: --env-file ./.env
+Пример: --env-file ./.env
 ```
 
-### Docker Container
+### Контейнер Docker
 
-- To stop a running container
+- Остановить запущенный контейнер
 
 ```bash
 docker stop <container-ID/name>
 ```
 
-- To resume a stopped container
+- Возобновить остановленный контейнер
 
 ```bash
 docker start <container-ID/name>
 ```
 
-- To check the running processes inside a container.
+- Проверить процессы, выполняющиеся внутри контейнера.
 
 ```bash
 docker top <container-name/id>
 ```
 
-- To check stats of running container.
+- Проверить статистику запущенного контейнера.
 
 ```bash
 docker stats <container-name/id>
 ```
 
-- Check the config and info of a container.
+- Посмотреть конфигурацию и информацию о контейнере.
 
 ```bash
 docker inspect <container-name/id>
-//Eg: docker inspect mynginx
+//Пример: docker inspect mynginx
 ```
 
-- Check all the container running.
+- Посмотреть все запущенные контейнеры.
 
 ```bash
 docker ps
-or
+или
 docker container ls
 ```
 
-- To start and interactive session and attach terminal with the container.
+- Запустить интерактивную сессию и подключить терминал к контейнеру.
 
-  - NOTE: every image does not support `bash` so we should use `sh`
+  - ПРИМЕЧАНИЕ: не каждый образ поддерживает `bash`, поэтому следует использовать `sh`
 
 ```
 docker exec -it <container-ID/name> bash/sh
 ```
 
-- To check which ports has been exposed and forwarded
+- Проверить, какие порты открыты и проброшены
 
 ```bash
 docker port <image-name>
 ```
 
-- To check all the containers (stopped, paused and running)
+- Посмотреть все контейнеры (остановленные, приостановленные и запущенные)
 
 ```bash
 docker ps -a
 ```
 
-- Check logs of a container
+- Посмотреть логи контейнера
 
 ```bash
 docker logs <container-ID/name>
 ```
 
-- Delete all the stopped containers
+- Удалить все остановленные контейнеры
 
 ```bash
 docker container prune -f
 ```
 
-- Delete all the containers (stopped, paused and running)
+- Удалить все контейнеры (остановленные, приостановленные и запущенные)
 ```bash
 docker rm -f $(docker ps -aq)
 ```
-- Delete all the images
+- Удалить все образы
 ```bash
 docker rmi -f $(docker images -q)
 ```
 
-- Remove unused images
+- Удалить неиспользуемые образы
 ```bash
 docker image prune -all
 ```
 
-- Auto cleanup when the container exits
+- Автоматическая очистка при завершении контейнера
 
 ```bash
  docker container run —rm <image-name>
 ```
 
-### Docker Network
+### Сети Docker
 
-- Check list of avilable networks.
+- Посмотреть список доступных сетей.
 
 ```bash
 docker network ls
 ```
 
-- Inspect a network components, like which container are attached to that network.
+- Просмотреть компоненты сети, например какие контейнеры к ней подключены.
 
 ```bash
 docker network inspect <network-name>
 ```
 
-- Run a container on a certian network/own careted network
+- Запустить контейнер в определённой сети / собственной созданной сети
 
 ```
 docker run --network <network-name> <image-name>
@@ -167,33 +167,33 @@ docker run --network <network-name> <image-name>
 docker inspect --format "{{.NetworkSettings.IPAddress}}" <container-name>
 ```
 
-### Docker Images
+### Образы Docker
 
-- Remove an image
+- Удалить образ
 
 ```bash
 docker rmi <image name> -f
 ```
 
-- Remove all the images at once
+- Удалить все образы сразу
 
 ```bash
 docker rmi $(docker images -q)
 ```
 
-- To inspect an image layers and other info
+- Просмотреть слои образа и другую информацию
 
 ```bash
 docker inspect  <image-name/id>
 ```
 
-- Check the image layers formation
+- Посмотреть формирование слоёв образа
 
 ```bash
 docker history <image-name/id>
 ```
 
-- Create a our own image with an existing image.
+- Создать собственный образ с тегом на основе существующего образа.
 
 ```
 docker image tag <image-name:tag> <new-image-name:tag>
@@ -201,14 +201,14 @@ docker image tag nginx pradumna/nginx:hello
 docker image tag ubuntu:18.04 pradumna/ubuntu:example
 ```
 
-### Docker Volume
+### Тома Docker
 
-- Create bind mount
-  - Help to sync our local files with help of Docker container.
+- Создать bind mount
+  - Помогает синхронизировать локальные файлы с помощью контейнера Docker.
 
 
-- To sync our local machine changes with help of Docker volume (Bind mount)
-    - `- v` is use to define volume, also we give another `-v` flag to override the changes so that it will not chnage in container.
+- Синхронизировать локальные изменения с контейнером с помощью bind mount.
+    - `-v` используется для определения монтирования. При необходимости можно смонтировать второй путь в режиме только для чтения.
 
 ```bash
 docker run -v <path-to-folder-on-local-machine>:<path-to-folder-on-container> -p <host-port>:<container-port> -d --name docker-node docker-node
@@ -218,17 +218,17 @@ docker
 ```bash
 docker run -v <path-to-folder-on-local-machine>:<path-to-folder-on-container> -v <path-to-file/folder-on-container> -p <local-machine-port>:<container-port> -d --name docker-node docker-node
 ```
-To make it read only so that when you add some files inside it, the container will not get created on your local machine use `-v port:port:ro`
+Чтобы сделать монтирование доступным только для чтения, добавьте `:ro` в конец определения монтирования.
 
-- docker  volume command for mounting the docker socket to the docker container for accessing the host's docker daemon for performing the continuous integration in jenkins while using docker as a agent..
+- Команда docker volume для монтирования docker-сокета в контейнер, чтобы получить доступ к демону Docker хоста и выполнять непрерывную интеграцию в Jenkins, используя Docker в качестве агента..
 ```bash
 docker run -it -v /var/run/docker.sock:/var/run/docker.sock docker-image:version bin/bash
 ```
 
 ### Docker Compose
 
-- Run docker compose file.
-  Note: By default it finds for the file name `docker-compose.yaml`, to give file with other naming use `-f <file-name.yaml>` command
+- Запустить проект Docker Compose.
+  Примечание: если не передать `-f`, Docker ищет `compose.yaml` или `docker-compose.yaml` в рабочем каталоге.
 
 ```bash
 docker compose up -d
@@ -238,139 +238,145 @@ docker compose up -d
 docker compose down
 ```
 
-- To rebuilt the new Image with thew new changes
+- Пересобрать образ с новыми изменениями.
 
 ```bash
 docker compose up --build
 ```
 
-- Override the existing of compose file
+- Объединить несколько файлов Compose.
 
 ```bash
-docker compose -f docker-compose.yaml  -f docker-compose.dev.yaml
+docker compose -f compose.yaml -f compose.dev.yaml
 ```
 
-###  Docker Swarm and Services
+### Docker Swarm и сервисы
 
-- Initalize swarm
+- Инициализировать Swarm
 
 ```bash
 docker swarm init
 ```
 
-- Check all the node available
+- Посмотреть все доступные узлы
 
 ```bash
 docker node ls
 ```
 
-- To add a node as a manager
+- Добавить узел в качестве менеджера
 
 ```bash
 docker node update --role manager <node-name>
 ```
 
-- To create an overlay network
+- Создать overlay-сеть
 
 ```bash
 docker network create -d overlay backend
 ```
 
-- Create a service. Also we can add flags for further customization.
+- Создать сервис. Также можно добавить флаги для дополнительной настройки.
 
-    - `--name` - to give a service name
-    - `--replicas` - to define how many running instance of the same image.
-    - `-p` - for port forwarding
+    - `--name` - задать имя сервиса
+    - `--replicas` - определить, сколько запущенных экземпляров одного образа.
+    - `-p` - для проброса портов
 
 ```bash
 docker service create -p 8080:80 --name vote --replicas 2 nginx
 ```
 
-- To get all task containers running on different node
+- Получить все контейнеры задач, работающие на разных узлах
 
 ```bash
 docker service ps <service-name/id>
 ```
 
-> SERVICE UPDATE
+> ОБНОВЛЕНИЕ СЕРВИСА
 
-- To scale up the service (i.e increasing the no of replicas)
+- Масштабировать сервис (то есть увеличить количество реплик)
 
 ```bash
 docker service scale <service name>=<no to scale>
 docker service scale mynginx=5
 ```
 
-- To update the image in running service
+- Обновить образ в запущенном сервисе
 
 ```bash
 docker service update --image <updated image> <service name>
 docker service update --image mynginx:1.13.6  web
 ```
 
-- To update the port
+- Обновить порт
 
-We can't directly update the port We have to add and remove the ports
+Обновить порт напрямую нельзя — нужно добавить и удалить порты
 
 ```
 docker service update --publish-rm 8080 --publish-add 808180 <service name>
 docker service update --publish-rm 8080 --publish-add 808180 mynginx
 ```
 
-### Docker Stack
+### Стек Docker
 
-- To deploy a stack file
+- Развернуть файл стека
 
 ```bash
 docker stack deploy -c <file-name.yaml> <stackname>
 ```
 
-- To remove running stack
+- Удалить запущенный стек
 
 ```
 docker stack rm <stack name>
 ```
 
-- To check list of stacks running
+- Посмотреть список запущенных стеков
 
 ```
 docker stack ls
 ```
 
-**STACK -> SERVICES -> TASKS -> CONTAINERS**
+**СТЕК -> СЕРВИСЫ -> ЗАДАЧИ -> КОНТЕЙНЕРЫ**
 
-- To check which services are running inside a staacks
+- Проверить, какие сервисы работают внутри стека
 
 ```
 docker stack services <stack name>
 ```
 
-- To check taks are running inside a stack
+- Проверить, какие задачи работают внутри стека
 
 ```
 docker stack ps <stack name>
 ```
 
-> Registry
+> Реестр
 
 ```
 127.0.0.0:5000/v2/_catalog
 ```
 
-### Tips and Short hands
+### Советы и сокращения
 
-- Run the command with the container creation
+- Выполнить команду при создании контейнера
 
 ```bash
-doc run <image-name> <command>
-// Eg: `doc run ubuntu:16.04 echo hey`
+docker run <image-name> <command>
+// Пример: `docker run ubuntu:16.04 echo hey`
 ```
 
 
-- Creating our Own image and container.
+- Создание собственного образа и контейнера.
 
 ```
-Step 1 - create Dockerfile
-Step 2 - docker build -t myimage:1.0 <path-of-dockerfile> (-t for tag)
-Step 3 - docker run myimage:1.0
+Шаг 1 — создайте Dockerfile
+Шаг 2 — docker build -t myimage:1.0 <path-of-dockerfile> (-t для тега)
+Шаг 3 — docker run myimage:1.0
 ```
+
+## Что читать дальше
+
+- [Введение в Docker](./introduction.md) — повторите основные концепции Docker, лежащие в основе этих команд.
+- [Обучающие ресурсы](./learning-resources.md) — продолжите обучение на курсах и видео для более глубокой практики.
+- [Другие ресурсы](./other-resources.md) — изучите примеры Dockerfile и файлов Compose.

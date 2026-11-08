@@ -1,13 +1,18 @@
 ---
 sidebar_position: 6
-title: Other Resources
-description: A collection of resources to learn more about Bash Scripting.
+title: Другие ресурсы
+description: Подборка ресурсов для более глубокого изучения Bash Scripting.
 tags: ["Bash Scripting", "Linux", "Shell Scripting"]
 keywords: ["Bash Scripting", "Linux", "Shell Scripting"]
 slug: "/bash/other-resources"
 ---
 
-Here are list of other resources that you can refer to learn more about Bash Scripting:
+Вот несколько дополнительных ресурсов, которые помогут изучить Bash-скрипты на примерах:
 
-- [Concepts](https://github.com/Pradumnasaraf/DevOps/tree/main/docs/bash-scripting/concepts): Each topic is break into seprate files to help better understand the concepts.
-- [Scripts](https://github.com/Pradumnasaraf/DevOps/tree/main/docs/bash-scripting/scripts): A collection of Bash scripts I have created to help you understand the concepts better.
+- [Концепции](https://github.com/Pradumnasaraf/DevOps/tree/main/docs/bash-scripting/concepts): каждая тема вынесена в отдельный файл, чтобы концепции было проще понимать.
+- [Скрипты](https://github.com/Pradumnasaraf/DevOps/tree/main/docs/bash-scripting/scripts): коллекция Bash-скриптов, которые я создал, чтобы помочь вам лучше разобраться в концепциях.
+
+## Что дальше
+
+- [Введение в Bash Scripting](./introduction.md) — вернитесь к основам и распространённым концепциям оболочки.
+- [Инструменты](./tools.md) — изучите инструменты, которые упрощают работу с оболочкой.

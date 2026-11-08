@@ -1,15 +1,15 @@
 ---
 sidebar_position: 2
-title: Learning Resources
-description: A collection of resources to learn more about Prometheus.
+title: Обучающие материалы
+description: Подборка ресурсов для изучения Prometheus.
 tags: ["Prometheus", "Monitoring", "Alerting", "Time Series Database"]
 keywords: ["Prometheus", "Monitoring", "Alerting", "Time Series Database"]
 slug: "/prometheus/resources"
 ---
 
-- [Prometheus Playlist - TechWorld with Nana](https://youtube.com/playlist?list=PLy7NrYWoggjxCF3av5JKwyG7FFF9eLeL4)
+- [Плейлист по Prometheus — TechWorld with Nana](https://youtube.com/playlist?list=PLy7NrYWoggjxCF3av5JKwyG7FFF9eLeL4)
 
-## Read next
+## Читать далее
 
-- [Prometheus Introduction](./introduction.md) - Review the monitoring stack and basic concepts.
-- [Kubernetes Introduction](../kubernetes/introduction.md) - Connect Prometheus setup back to Kubernetes basics.
+- [Введение в Prometheus](./introduction.md) — обзор стека мониторинга и основных понятий.
+- [Введение в Kubernetes](../kubernetes/introduction.md) — свяжите установку Prometheus с основами Kubernetes.

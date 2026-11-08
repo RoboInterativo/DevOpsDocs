@@ -1,27 +1,31 @@
 ---
 sidebar_position: 1
-title: GitOps Introduction
-description: Learn about GitOps and its benefits.
+title: GitOps Введение
+description: Узнайте о GitOps и его преимуществах.
 tags: ["GitOps", "Kubernetes", "Continuous Delivery"]
 keywords: ["GitOps", "Kubernetes", "Continuous Delivery"]
 slug: "/gitops"
 ---
 
-GitOps is a way of managing infrastructure and applications by using Git as the source of truth. In a Kubernetes setup, that usually means the desired cluster state lives in a Git repository, and an agent in the cluster applies or reconciles that state.
+GitOps — это способ управления инфраструктурой и приложениями, при котором Git используется как источник истины. В среде Kubernetes это обычно означает, что желаемое состояние кластера хранится в Git-репозитории, а агент в кластере применяет или согласовывает это состояние.
 
-### Benefits of GitOps
 
-- The history of changes is stored in Git.
-- Rolling back to a previous state is easier.
-- Changes can be reviewed before they are applied.
-- Changes can be tested before they reach the cluster.
-- Synchronization can be automated.
 
-### GitOps Tools
+### Преимущества GitOps
 
-- [Argo CD](../argocd/introduction.md) is a GitOps controller that can be used to deploy applications to a Kubernetes cluster.
 
-### What's next?
+- История изменений хранится в Git.
+- Откат к предыдущему состоянию проще.
+- Изменения можно проверить на ревью перед применением.
+- Изменения можно протестировать до того, как они попадут в кластер.
+- Синхронизацию можно автоматизировать.
 
-- [Learning Resources](./learning-resources.md) - Learn more about GitOps with these resources.
-- [Argo CD](../argocd/introduction.md) - Learn more about Argo CD.
+### GitOps Инструментарий
+
+- [Argo CD](../argocd/introduction.md) это контроллер GitOps, который можно использовать для развёртывания приложений в кластере Kubernetes.
+
+### Что дальше?
+
+
+- [Learning Resources](./learning-resources.md) - узнайте больше о GitOps с помощью этих ресурсов..
+- [Argo CD](../argocd/introduction.md) - узнайте больше об Argo CD.

@@ -6,10 +6,14 @@ tags: ["YAML", "DevOps", "Kubernetes"]
 keywords: ["YAML", "DevOps", "Kubernetes"]
 slug: "/yaml/tools"
 ---
-Здесь перечислены инструменты которые можно использовать с YAML:
+Здесь перечислены полезные инструменты, с помощью которых можно проверять, форматировать и конвертировать YAML-файлы:
 
+- [Yamllint](http://www.yamllint.com/) - Проверка формата и структуры YAML-файла.
+- [YAML Validator](https://codebeautify.org/yaml-validator) - Быстрая проверка YAML-файла в браузере.
+- [YAML to JSON](https://codebeautify.org/yaml-to-json-xml-csv) - Конвертация YAML в JSON.
+- [YAMLine](https://yamline.com/) - Коллекция YAML-инструментов: форматировщик, валидатор, компаратор и конвертер.
 
-- [Yamllint](http://www.yamllint.com/) - Проверка формата файл.
-- [YAML Validator](https://codebeautify.org/yaml-validator) -  Проверка формата файл.
-- [YAML to JSON](https://codebeautify.org/yaml-to-json-xml-csv) - Конвертер YAML в JSON.
-- [YAMLine](https://yamline.com/) - Коллекция  YAML инструментов: Инструменты форматирования, валидации, сравнения и конвертации.
+## Читать далее
+
+- [Введение в YAML](./introduction.md) - Повторите синтаксис и распространённые шаблоны YAML.
+- [Обучающие ресурсы](./learning-resources.md) - Продолжите с руководствами и справочными материалами.

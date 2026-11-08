@@ -1,40 +1,44 @@
 ---
 title: Portainer
 sidebar_position: 3
+description: Сборник ресурсов для изучения Portainer.
+tags: ["Portainer", "Kubernetes", "Docker", "Containerization"]
+keywords: ["Portainer", "Kubernetes", "Docker", "Containerization"]
+slug: "/kubernetes/tools/portainer"
 ---
 
 
 
-### Resources
+### Ресурсы
 
 - [Portainer](https://www.portainer.io/)
-- [Portainer Documentation](https://documentation.portainer.io/)
-- [Portainer GitHub](https://github.com/portainer/portainer)
+- [Документация Portainer](https://documentation.portainer.io/)
+- [Portainer на GitHub](https://github.com/portainer/portainer)
 
-### Installation
+### Установка
 
-Via Helm
+С помощью Helm
 
-- Create a namespace for portainer
+- Создайте пространство имён для Portainer
 
 ```bash
 kubectl create namespace portainer
 ```
 
--  Add the portainer helm repository
+-  Добавьте Helm-репозиторий Portainer
 
 ```bash
 helm repo add portainer https://portainer.github.io/k8s
 ```
 
-- Install the portainer helm chart
+- Установите Helm-чарт Portainer
 
 ```bash
 helm update
 helm install -n portainer portainer portainer/portainer 
 ```
 
-> To install the business edition, use the following command
+> Для установки бизнес-редакции используйте следующую команду
 
 ```bash
 helm install --create-namespace -n portainer portainer portainer/portainer \
@@ -42,12 +46,12 @@ helm install --create-namespace -n portainer portainer portainer/portainer \
     --set tls.force=true
 ```
 
-- To access the portainer dashboard, run the following command
+- Чтобы открыть панель управления Portainer, выполните следующую команду
 
 ```bash
 kubectl -n portainer port-forward svc/portainer 9000:9000
 ```
 
-Dashboard will be available at http://localhost:9000. Preview
+Панель управления будет доступна по адресу http://localhost:9000.
 
-- For business edition, follow this [guide](https://install.portainer.io/).
+- Для бизнес-редакции следуйте этому [руководству](https://install.portainer.io/).

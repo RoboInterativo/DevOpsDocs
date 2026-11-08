@@ -1,15 +1,15 @@
 ---
 sidebar_position: 1
-title: Bash Scripting Introduction
-description: A deep dive into Bash Scripting, a scripting language for the Unix shell.
+title: Введение в Bash Scripting
+description: Подробное знакомство с Bash Scripting — языком сценариев для Unix-оболочки.
 tags: ["Bash", "Scripting", "Unix", "Shell"]
 keywords: ["Bash", "Scripting", "Unix", "Shell"]
 slug: "/bash"
 ---
 
-We start by creating a file with the `.sh` extension. For example, `script.sh`. Then we write the script in it. For example:
+Обычно мы начинаем с создания файла с расширением `.sh`, например `script.sh`, а затем добавляем в него команды Bash.
 
-Basic Script
+Базовый скрипт
 
 ```bash
 #!/bin/bash
@@ -17,15 +17,15 @@ Basic Script
 echo "Hello World"
 ```    
 
-We can run this by `bash script.sh` or `./script.sh`. But the second will only work if the script is executable (permission to execute). We can make it executable by `chmod +x script.sh`. Now we can run it by `./script.sh`.
+Вы можете запустить этот скрипт командой `bash script.sh` или `./script.sh`. Второй вариант сработает только если файл исполняемый. Чтобы сделать его исполняемым, выполните `chmod +x script.sh`.
 
 ### Shebang
 
-The first line of a bash script is called the shebang. It tells the system which interpreter to use to run the script. The shebang for bash is `#!/bin/bash`. The shebang for python is `#!/usr/bin/env python`. It varies from language to language.
+Первая строка Bash-скрипта называется shebang. Она сообщает системе, какой интерпретатор должен запускать файл. Для Bash обычный shebang — `#!/bin/bash`.
 
-### Variables
+### Переменные
 
-It is a placeholder for a value. Just like any other programming language. We use $ to access the variable. Eg: `$NAME`. We can also use `${NAME}`. The braces ensure the variable is not mistaken for a command.
+Переменная — это именованное значение. В Bash мы используем `$`, чтобы прочитать его, например `$NAME`. Также можно писать `${NAME}`, когда нужно явно обозначить границы имени переменной.
 
 ```bash
 #!/bin/bash
@@ -39,13 +39,13 @@ echo "My name is $NAME"
 echo "My name is ${NAME}"
 ```
 
-NOTE: We can create variables by `NAME="John"` through CLI; we can't use it in the script because it is not exported. We can export it by `export NAME="John"`. Now we can use it in the script.
+ПРИМЕЧАНИЕ: Если вы зададите `NAME="John"` в оболочке, это будет только переменная оболочки. Чтобы сделать её доступной дочерним процессам, экспортируйте её командой `export NAME="John"`.
 
-But here is one more catch. If we exit the terminal and open a new one, the variable will be gone. To make it permanent, we can add it to the `.bashrc` file. It is a hidden file in the home directory. We can open it by `vi ~/.bashrc` or any other editor. We can add the variable to the file. Eg: `export NAME="John"`.
+Если закрыть терминал, экспортированная переменная исчезнет. Чтобы сохранить её для будущих сеансов оболочки, добавьте её в `~/.bashrc` или другой файл запуска вашей оболочки.
 
-### User Input
+### Пользовательский ввод
 
-We can take input from the user using the `read` command.
+Мы можем принимать ввод от пользователя с помощью команды `read`.
 
 ```bash
 #!/bin/bash
@@ -55,11 +55,11 @@ read NAME
 echo "Hello $NAME, nice to meet you!"
 ```
 
-### Arguments
+### Аргументы
 
-We can pass arguments to the script. The arguments are stored in the `$1`, `$2`, `$3` and so on. `$0` is the name of the script.
+Мы можем передавать аргументы скрипту. Аргументы хранятся в `$1`, `$2`, `$3` и так далее. `$0` — это имя скрипта.
 
-Eg: `bash script.sh arg1 arg2`
+Например: `bash script.sh arg1 arg2`
 
 ```bash
 #!/bin/bash
@@ -67,9 +67,9 @@ Eg: `bash script.sh arg1 arg2`
 echo "First Argument: $1"
 ```
 
-### Arithmetic Operations
+### Арифметические операции
 
-We can do Arithmetic operations in bash. We use the `(( ))` to do Arithmetic operations.
+Мы можем выполнять арифметические операции в Bash с помощью `(( ))`.
 
 ```bash
 #!/bin/bash
@@ -77,17 +77,17 @@ We can do Arithmetic operations in bash. We use the `(( ))` to do Arithmetic ope
 echo $(( 5 + 5 ))
 ```
 
-#### Arithmetic Operators
+#### Арифметические операторы
 
-- `+` - Addition
-- `-` - Subtraction
-- `*` - Multiplication
-- `/` - Division
-- `%` - Modulus
+- `+` - Сложение
+- `-` - Вычитание
+- `*` - Умножение
+- `/` - Деление
+- `%` - Остаток от деления
 
-### Conditional Statements
+### Условные операторы
 
-We can use the `if` statement to check for a condition. The syntax is:
+Мы можем использовать оператор `if` для проверки условия. Синтаксис:
 
 ```bash
 #!/bin/bash
@@ -104,32 +104,30 @@ else
 fi
 ```
 
-```bash
-if [$1 == "hello"], then echo "Hello World", fi
-```
+Существует компактная однострочная форма, но блочная форма легче читается и отлаживается.
 
-#### Comparison Operators
+#### Операторы сравнения
 
-- `==` - Equal to
-- `>` - Greater than
-- `<` - Less than
-- `>=` - Greater than or equal to
-- `<=` - Less than or equal to
-- `!=` - Not equal to
-- `-ge` - Greater than or equal to
-- `-le` - Less than or equal to
+- `==` - Равно
+- `>` - Больше
+- `<` - Меньше
+- `>=` - Больше или равно
+- `<=` - Меньше или равно
+- `!=` - Не равно
+- `-ge` - Больше или равно
+- `-le` - Меньше или равно
 
-#### Boolean Operators
+#### Логические операторы
 
-- `-a` - And
-- `-o` - Or
-- `!` - Not
+- `-a` - И
+- `-o` - Или
+- `!` - Не
 
-### Loops
+### Циклы
 
-We can use loops to repeat a set of commands. There are two types of loops in bash. `for` and `while`. The body is enclosed in `do` and `done`.
+Мы можем использовать циклы для повторения набора команд. В bash есть два типа циклов: `for` и `while`. Тело заключается в `do` и `done`.
 
-#### For Loop
+#### Цикл For
 
 ```bash
 #!/bin/bash
@@ -140,7 +138,7 @@ do
 done
 ```
 
-#### While Loop
+#### Цикл While
 
 ```bash
 
@@ -154,9 +152,9 @@ do
 done
 ```
 
-#### Break and Continue
+#### Break и Continue
 
-We can use `break` and `continue` in loops. `break` will break the loop and `continue` will skip the current iteration.
+Мы можем использовать `break` и `continue` в циклах. `break` прервёт цикл, а `continue` пропустит текущую итерацию.
 
 ```bash
 #!/bin/bash
@@ -171,9 +169,9 @@ do
 done
 ```
 
-### Functions  
+### Функции  
 
-We can create functions in bash. The syntax is:
+Мы можем создавать функции в Bash так:
 
 ```bash
 #!/bin/bash
@@ -186,39 +184,39 @@ sayHello
 ```
 
 
-- `exit 1` - Exit the script with an error (non-zero exit code).
-- $RANDOM gives a random number between 0 and 32767.
-- $SHELL gives the path of the shell.
-- $USER gives the username of the user.
-- $HOSTNAME gives the hostname of the machine.
+- `exit 1` - Завершить скрипт с ошибкой (ненулевой код выхода).
+- $RANDOM возвращает случайное число от 0 до 32767.
+- $SHELL возвращает путь к оболочке.
+- $USER возвращает имя пользователя.
+- $HOSTNAME возвращает имя хоста машины.
 
 
 ### jq
 
-jq is a command-line JSON processor. It is used to parse JSON. It is used to extract data from JSON. It is used to transform JSON. It is used to generate JSON.
+`jq` — это командный процессор JSON. Он полезен для чтения, фильтрации, преобразования и генерации JSON из shell-скриптов.
 
-#### Installation
+#### Установка
 
 ```bash
 sudo apt install jq
 ```
 
-#### Usage
+#### Использование
 
-The format in JSON.
+Формат в JSON.
 
 ```bash
 echo '{"name": "John", "age": 30}' | jq
 ```
 
-It will print out the specified key.
+Он выведет указанный ключ.
 
 ```bash
 echo '{"name": "John", "age": 30}' | jq '.name'
 ```
 
-### What's next?
+### Что дальше?
 
-- [Learning Resources](./learning-resources.md) - Learn more about Bash Scripting with these resources.
-- [Other Resources](./other-resources.md) - Explore more about Bash Scripting with these resources.
-- [Tools](./tools.md) - Explore the tools used in Bash Scripting.
+- [Учебные ресурсы](./learning-resources.md) - Узнайте больше о Bash Scripting с помощью этих ресурсов.
+- [Другие ресурсы](./other-resources.md) - Изучите больше о Bash Scripting с помощью этих ресурсов.
+- [Инструменты](./tools.md) - Ознакомьтесь с инструментами, используемыми в Bash Scripting.

@@ -1,12 +1,17 @@
 ---
 sidebar_position: 2
 title: Учебные ресурсы
-description: A collection of resources to learn more about Helm.
+description: Подборка ресурсов для более глубокого изучения Helm.
 tags: ["Helm", "Kubernetes", "DevOps"]
 keywords: ["Helm", "Kubernetes", "DevOps"]
 slug: "/helm/resources"
 ---
 
-- [Helm Docs](https://helm.sh/)
-- [ Helm for beginers](https://www.youtube.com/watch?v=KeRrvCrF8zc)
-- [ Helm in Depth ](https://www.youtube.com/watch?v=gbUBTTXuQwI&list=PLLYW3zEOaqlKYku0piyzzLFGpR9VpPvXR)
+- [Документация Helm](https://helm.sh/)
+- [Helm для начинающих](https://www.youtube.com/watch?v=KeRrvCrF8zc)
+- [Helm в деталях](https://www.youtube.com/watch?v=gbUBTTXuQwI&list=PLLYW3zEOaqlKYku0piyzzLFGpR9VpPvXR)
+
+## Что дальше
+
+- [Введение в Helm](./introduction.md) — повторите чарты, шаблоны и релизы.
+- [Введение в Kubernetes](../kubernetes/introduction.md) — свяжите концепции Helm с Kubernetes.

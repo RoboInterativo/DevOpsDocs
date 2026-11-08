@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
-title: Learning Resources
-description: A collection of resources to learn more about GitOps.
+title: Обучающие Ресурсы
+description: Подборка ресурсов, чтобы узнать больше о GitOps.
 tags: ["GitOps", "Kubernetes", "Continuous Delivery"]
 keywords: ["GitOps", "Kubernetes", "Continuous Delivery"]
 slug: "/gitops/resources"

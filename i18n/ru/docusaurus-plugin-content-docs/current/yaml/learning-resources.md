@@ -13,3 +13,8 @@ slug: "/yaml/resources"
 - [Yaml Туториал(пошаговое руководство) - TechWorld with Nana](https://youtu.be/1uFVr15xDGg)
 - [Полный курс YAML ](https://youtu.be/IA90BTozdow)
 - [YAML: Батарейки не прилагаются в Python](https://realpython.com/python-yaml/)
+
+## Читать далее
+
+- [Введение в YAML](./introduction.md) - Повторите основы синтаксиса и структуры данных.
+- [Инструменты](./tools.md) - Проверяйте и форматируйте YAML с помощью перечисленных инструментов.

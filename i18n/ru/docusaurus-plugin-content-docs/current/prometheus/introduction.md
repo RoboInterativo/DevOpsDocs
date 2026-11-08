@@ -1,40 +1,40 @@
 ---
 sidebar_position: 1
-title: Prometheus Introduction
-description: A collection of resources to learn more about Prometheus.
+title: Введение в Prometheus
+description: Подборка ресурсов для изучения Prometheus.
 tags: ["Prometheus", "Monitoring", "Alerting", "Kubernetes"]
 keywords: ["Prometheus", "Monitoring", "Alerting", "Kubernetes"]
 slug: "/prometheus"
 ---
 
-Prometheus is an open-source monitoring and alerting toolkit. It is widely used to collect metrics, query them over time, and trigger alerts when systems behave unexpectedly.
+Prometheus — это опенсорсный инструментарий для мониторинга и оповещения. Он широко используется для сбора метрик, их запроса во времени и запуска оповещений, когда системы ведут себя неожиданно.
 
-### Installation using Helm
+### Установка с помощью Helm
 
-One common way to install Prometheus in Kubernetes is with the `kube-prometheus-stack` Helm chart. It includes Prometheus along with related components such as Grafana, Alertmanager, Node Exporter, and kube-state-metrics.
+Один из распространённых способов установки Prometheus в Kubernetes — это использование Helm-чарта `kube-prometheus-stack`. Он включает Prometheus вместе со смежными компонентами, такими как Grafana, Alertmanager, Node Exporter и kube-state-metrics.
 
 
-Step 1: Create a Kubernetes Namespace
+Шаг 1: Создайте пространство имён Kubernetes
 
 ```bash
 kubectl create namespace monitoring
 ```
-Step 2: Install Prometheus Operator
+Шаг 2: Установите Prometheus Operator
 
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring
 ```
-Step 3: Access through localhost using port forwarding
+Шаг 3: Получите доступ через localhost с помощью переадресации портов
 
 ```bash
 kubectl port-forward svc/prometheus-grafana 3000:80 -n monitoring
 ```
 
-> The Grafana dashboard will be available at `http://localhost:3000`. The default username is `admin`. The initial password usually comes from the chart configuration or the generated Kubernetes secret, depending on the version you install.
+> Панель Grafana будет доступна по адресу `http://localhost:3000`. Имя пользователя по умолчанию — `admin`. Исходный пароль обычно берётся из конфигурации чарта или из сгенерированного секрета Kubernetes, в зависимости от устанавливаемой версии.
 
 
-### What's next?
+### Что дальше?
 
-- [Learning Resources](./learning-resources.md) - Learn more about Prometheus with these resources.
+- [Обучающие материалы](./learning-resources.md) — узнайте больше о Prometheus с помощью этих ресурсов.

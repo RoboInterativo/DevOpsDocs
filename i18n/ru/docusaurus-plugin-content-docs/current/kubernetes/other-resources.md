@@ -1,12 +1,17 @@
 ---
 sidebar_position: 6
-title: Other Resources
-description: A collection of resources to learn more about Kubernetes.
+title: Другие ресурсы
+description: Сборник ресурсов для изучения Kubernetes.
 tags: ["Kubernetes", "Containerization", "DevOps"]
 keywords: ["Kubernetes", "Containerization", "DevOps"]
-slug: "/kubernetes/other-resource"
+slug: "/kubernetes/other-resources"
 ---
 
-Here are list of other resources that you can refer to learn more about Kubernetes:
+Вот несколько дополнительных ресурсов, которые помогут вам изучить Kubernetes за пределами основной документации:
 
-- [Kubernetes apps](https://github.com/Pradumnasaraf/DevOps/tree/main/docs/kubernetes/apps): A collection of simple Kubernetes applications that you can use to learn Kubernetes.
+- [Приложения Kubernetes](https://github.com/Pradumnasaraf/DevOps/tree/main/docs/kubernetes/apps): коллекция простых приложений Kubernetes, которые можно использовать для изучения Kubernetes.
+
+## Что дальше?
+
+- [Введение в Kubernetes](./introduction.md) — вернитесь к основным концепциям кластера и модели ресурсов.
+- [Команды Kubernetes](./commands.md) — попрактикуйтесь в командах, которые вы будете использовать каждый день.

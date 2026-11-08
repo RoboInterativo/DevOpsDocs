@@ -1,20 +1,20 @@
 ---
 sidebar_position: 21
-description: Feedback and suggestions
-title: Feedback & Suggestions
+description: Отзывы и предложения
+title: Отзывы и предложения
 
 ---
 
-Hey learner, practitioner, or expert in DevOps,
+Привет, учащийся, практик или эксперт в DevOps,
 
-Thank you for checking out this project. I ([Pradumna](https://x.com/pradumna_Saraf)) know the site is always a work in progress. Some pages will inevitably need updates as vendor docs, defaults, CLIs, and best practices change.
+Спасибо, что заглянули в этот проект. Я ([Pradumna](https://x.com/pradumna_Saraf)) знаю, что сайт всегда находится в процессе развития. Некоторые страницы неизбежно будут требовать обновлений по мере изменения документации вендоров, настроек по умолчанию, CLI и лучших практик.
 
-If you notice a broken link, outdated command, confusing explanation, or a better way to teach a concept, please share it. You can open a [Pull Request](https://github.com/Pradumnasaraf/DevOps) for small fixes. If the change is larger or you want to discuss the direction first, open an [Issue](https://github.com/Pradumnasaraf/DevOps/issues/new/choose).
+Если вы заметили битую ссылку, устаревшую команду, непонятное объяснение или более удачный способ объяснить концепцию, пожалуйста, поделитесь этим. Для небольших исправлений можно открыть [Pull Request](https://github.com/Pradumnasaraf/DevOps). Если изменение крупнее или вы хотите сначала обсудить направление, откройте [Issue](https://github.com/Pradumnasaraf/DevOps/issues/new/choose).
 
-The most helpful reports usually include:
+В самых полезных отчётах обычно указывают:
 
-- the page URL or doc path
-- what looks incorrect or unclear
-- the corrected example or an official source when available
+- URL страницы или путь к документу
+- что выглядит неправильным или непонятным
+- исправленный пример или официальный источник, если он доступен
 
-Thanks for helping keep the site useful.
+Спасибо, что помогаете делать сайт полезным.

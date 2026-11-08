@@ -8,19 +8,12 @@ slug: "/yaml"
 
 ## YAML - YAML это не язык разметки
 
-YAML(рекурсивный акроним англ. "YAML Ain't Markup Language" — "YAML — не язык разметки"".
-YAML - это человеко-читабельный язык серилизации данных. Часто используется для конфигурационных файлов и
-приложений где данные сохраняются или передаются.
+YAML - это человеко-читабельный язык сериализации данных. Он часто используется для конфигурационных файлов и описания структурированных данных в таких инструментах, как Kubernetes, GitHub Actions и Docker Compose.
 
-
-
-test
-test
-test
-Eg:
+Пример:
 
 ```yaml
-name: Pradumana
+name: Pradumna
 age: 21
 address:
   city: Bangalore
@@ -35,10 +28,10 @@ address:
 
 ### Свойства
 
-- Похож на  XML и JSON.
-- Мы не можем добавить комманды.
-- Строгий синтаксис - Отступы(Indentation)
-- Человеко читабельный язык серилизации данных.
+- По своему назначению схож с JSON и XML.
+- Предназначен для данных, а не для исполняемых команд.
+- Чувствителен к отступам и пробелам.
+- Легко читается человеком при чётко оформленных данных.
 
 ### Синтаксис
 
@@ -46,7 +39,7 @@ address:
 
 ```yaml
 Name: "Pradumna Saraf"
-1: "This a list"
+1: "Это значение"
 ```
 
 #### Список
@@ -60,7 +53,7 @@ Name: "Pradumna Saraf"
 или
 
 ```yaml
-cities: [new delhi, patna,gujrat]
+cities: [new delhi, patna, gujarat]
 ```
 
 #### Строки и переменнные
@@ -71,7 +64,7 @@ fruit: "Mango"
 job: 'Advocate'
 age: 65
 marks: 10.33
-booleanValue: No, N, false, False, FALSE
+booleanValue: false
 ```
 
 #### Многострочный текст
@@ -82,7 +75,7 @@ Address: |
   Delhi
   India
 ```
-Отнострок в многострочном тексте.
+Сложенный стиль (folded style) объединяет несколько строк в одну строку.
 
 ```yaml
 message: >
@@ -92,7 +85,7 @@ message: >
 
 ```
 
-#### Вложеннные типы
+#### Вложенные отображения
 
 ```yaml
 names: Pradumna
@@ -137,7 +130,7 @@ surname: !!null #null or NULL ~
 ~: this a null key
 
 # Exponential Numbers(Экспонента)
-myNum: 6.22ES56
+myNum: 6.22E56
 
 # Dates and time (Дата и время)
 date: !!timestamp 2002-01-02
@@ -147,9 +140,9 @@ India Time: 2012-12-15T02:59:43 +5:30
 
 ### Использование
 
-- Применяются в Kubernetes, Ansible, Docker, и так далее.
-- Используется для хранения данных типа ключ, значение.
-- CI/CD инструменты такие как GitLab GitHub Actions, CircleCI, используют YAML для создания процесса(трубопровода)
+- Применяется в Kubernetes, Ansible, Docker и многих других инструментах.
+- Полезен для хранения данных в виде пар «ключ — значение».
+- Часто используется в системах CI/CD, таких как GitHub Actions и CircleCI.
 
 ### Что дальше?
 

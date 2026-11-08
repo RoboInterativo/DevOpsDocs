@@ -1,36 +1,40 @@
 ---
 title: Kubescape
 sidebar_position: 2
+description: Инструмент, который помогает проверять кластеры Kubernetes на наличие проблем безопасности и неправильных конфигураций.
+tags: [Kubernetes, Tools, Security]
+keywords: [Kubernetes, Tools, Security, Kubescape]
+slug: /kubernetes/tools/kubescape
 ---
 
 
-Kubescape is a tool that helps you scan your Kubernetes clusters for security misconfigurations. We can scan local cluster and config files.
+Kubescape — это инструмент, который помогает проверять кластеры Kubernetes на наличие неправильных конфигураций безопасности. Мы можем сканировать локальный кластер и файлы конфигурации.
 
-- [Website](https://armosec.io/kubescape)
-- [Docs](https://hub.armosec.io/docs)
+- [Сайт](https://armosec.io/kubescape)
+- [Документация](https://hub.armosec.io/docs)
 - [GitHub](https://github.com/kubescape/kubescape)
- 
-### Usage
 
-For more usages head over to [GitHub](https://github.com/kubescape/kubescape)
+### Использование
 
-- Install Kubescape
+Больше примеров использования смотрите на [GitHub](https://github.com/kubescape/kubescape)
 
-Installations instructions can be found [here](https://github.com/kubescape/kubescape#install-on-macos)
+- Установка Kubescape
 
-- To scan local YAML/JSON files.
+Инструкции по установке можно найти [здесь](https://github.com/kubescape/kubescape#install-on-macos)
+
+- Сканирование локальных YAML/JSON-файлов.
 
 ```bash
 kubescape scan *.yaml
 ```
 
-- To Scan Kubernetes manifest files from a git repository
+- Сканирование манифестов Kubernetes из git-репозитория
 
 ```bash
 kubescape scan https://github.com/kubescape/kubescape
 ```
 
-- We can output the results in JSON, html, and markdown PDF.
+- Результаты можно выводить в форматах JSON, HTML и markdown PDF.
 
 ```bash
 kubescape scan *.yaml --output results.json

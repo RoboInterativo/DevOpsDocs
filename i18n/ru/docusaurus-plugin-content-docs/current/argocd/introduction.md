@@ -7,55 +7,55 @@ keywords: ["ArgoCD", "GitOps", "Kubernetes", "Continuous Delivery"]
 slug: "/argocd"
 ---
 
-Argo CD is a GitOps controller for Kubernetes. It watches a Git repository, compares the desired state with the current cluster state, and helps keep them in sync. It is commonly used to deploy applications and manage cluster configuration declaratively.
+Argo CD — это GitOps-контроллер для Kubernetes. Он отслеживает Git-репозиторий, сравнивает желаемое состояние с текущим состоянием кластера и помогает поддерживать их синхронизацию. Обычно он используется для развёртывания приложений и декларативного управления конфигурацией кластера.
 
-> One of the main ideas in GitOps is simple: store the desired state in Git.
+> Одна из главных идей GitOps проста: храните желаемое состояние в Git.
 
-- For production, you can use tools such as [Autopilot](https://github.com/argoproj-labs/argocd-autopilot), install from the official [manifest directory](https://github.com/argoproj/argo-cd/tree/master/manifests), or use the community [Helm chart](https://github.com/argoproj/argo-helm/tree/master/charts/argo-cd).
+- Для продакшена можно использовать такие инструменты, как [Autopilot](https://github.com/argoproj-labs/argocd-autopilot), устанавливать из официального каталога манифестов [manifest directory](https://github.com/argoproj/argo-cd/tree/master/manifests) или использовать community-Helm-чарт [Helm chart](https://github.com/argoproj/argo-helm/tree/master/charts/argo-cd).
 
 <p align="center"><img width="1014" alt="Screenshot 2022-11-29 at 11 44 57 PM" src="https://user-images.githubusercontent.com/51878265/204613004-e5dace25-7502-487d-acea-86d63c70cc2a.png"></img></p>
 
-### Installation
+### Установка
 
-- Install it by applying the manifests. Reference: [Argo CD Installation](https://argoproj.github.io/argo-cd/getting_started/#1-install-argo-cd)
+- Установите, применив манифесты. Ссылка: [Argo CD Installation](https://argoproj.github.io/argo-cd/getting_started/#1-install-argo-cd)
 
 ```bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-Default credentials:
+Учётные данные по умолчанию:
 
-- Username: admin
-- Password: You can get it by running the following command
+- Username (Имя пользователя): admin
+- Password (Пароль): его можно получить, выполнив следующую команду
 
 ```bash
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
-## Sync Policy - Features
+## Политика синхронизации — возможности
 
 <p align="center"><img width="820" alt="Screenshot 2022-11-30 at 4 56 41 PM" src="https://user-images.githubusercontent.com/51878265/204785046-93eb5b20-31b6-4f2b-b2a4-223f88f18718.png"></img></p>
 
-- **Auto Sync** - Argo CD automatically syncs the application with the Git repository.
+- **Auto Sync (автосинхронизация)** — Argo CD автоматически синхронизирует приложение с Git-репозиторием.
 
-- **Self Healing** - If someone changes resources directly in the cluster, Argo CD can revert them so the live state matches Git again.
+- **Self Healing (самовосстановление)** — если кто-то изменит ресурсы напрямую в кластере, Argo CD может откатить их, чтобы текущее состояние снова соответствовало Git.
 
-- **Auto Pruning** - Argo CD can automatically remove resources that are no longer defined in Git.
+- **Auto Pruning (автоочистка)** — Argo CD может автоматически удалять ресурсы, которые больше не определены в Git.
 
-## Progressive Delivery
+## Progressive Delivery (постепенная доставка)
 
-Progressive Delivery is the practice of deploying an application in a gradual manner allowing for minimum downtime and easy rollbacks. There are several forms of progressive delivery such as blue/green, canary, a/b and feature flags.
+Progressive Delivery — это практика развёртывания приложения постепенно, что позволяет минимизировать простой и упростить откаты. Существует несколько форм постепенной доставки, таких как blue/green, canary, a/b и feature flags.
 
-- **Blue/Green** - Deploy the new version of the application to a new environment and then switch the traffic to the new environment. This is the most common form of progressive delivery. It is also the most complex to implement. It requires a lot of infrastructure and a lot of testing.
+- **Blue/Green** — разверните новую версию приложения в новом окружении, а затем переключите трафик на новое окружение. Это наиболее распространённая форма постепенной доставки. Она также наиболее сложна в реализации. Требует много инфраструктуры и много тестирования.
 
-- **Canary** - Deploy the new version of the application to a small subset of users. If the new version is working fine, then deploy it to the rest of the users. This is the most common form of progressive delivery. It is also the most complex to implement. It requires a lot of infrastructure and a lot of testing.
+- **Canary** — разверните новую версию приложения для небольшой части пользователей. Если новая версия работает нормально, разверните её для остальных пользователей. Это наиболее распространённая форма постепенной доставки. Она также наиболее сложна в реализации. Требует много инфраструктуры и много тестирования.
 
-- To keep the whole setup declarative, we can define Argo CD applications just like any other Kubernetes resource and store them in Git as well.
+- Чтобы вся конфигурация оставалась декларативной, мы можем определять приложения Argo CD так же, как любой другой ресурс Kubernetes, и хранить их в Git.
 
-[Docs](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/) for reference.
+[Документация](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/) для справки.
 
-Sample YAML:
+Пример YAML:
 
 ```YAML
 apiVersion: argoproj.io/v1alpha1
@@ -81,7 +81,7 @@ spec:
         - CreateNamespace=true # This will create namespace if not present
 ```
 
-### What's next?
+### Что дальше?
 
-- [Learning Resources](learning-resources.md) - Learn more about ArgoCD with these resources.
-- [Other Resources](other-resources.md) - Explore more about ArgoCD with these resources.
+- [Список обучающих ресурсов](learning-resources.md) — узнайте больше об ArgoCD с помощью этих ресурсов.
+- [Другие ресурсы](other-resources.md) — изучите больше об ArgoCD с помощью этих ресурсов.

@@ -1,48 +1,55 @@
 ---
 sidebar_position: 1
 title: Введение в Kubernetes
-description: A guide to Kubernetes, a container orchestration tool.
+description: Руководство по Kubernetes — инструменту оркестрации контейнеров.
 tags: ["Kubernetes", "Container Orchestration", "DevOps"]
 keywords: ["Kubernetes", "Container Orchestration", "DevOps"]
 slug: "/kubernetes"
 ---
 
-## Компоненты Kubernetes - архитектура
+Kubernetes — это платформа с открытым исходным кодом для запуска контейнеризованных рабочих нагрузок и сервисов. Её главная сила — декларативная конфигурация и автоматизация планирования, развертывания, масштабирования, работы с сетью и восстановления.
+
+## Архитектура кластера
 
 ![Kube-component](https://user-images.githubusercontent.com/51878265/197317939-d7e8ecbb-912c-4223-b64a-1c46cbac255f.png)
 
 <details>
   <summary>Упрощенное изображение</summary>
 
-![image](https://user-images.githubusercontent.com/51878265/197317783-ef595279-520d-4354-b995-96bff072485e.png)
+  ![image](https://user-images.githubusercontent.com/51878265/197317783-ef595279-520d-4354-b995-96bff072485e.png)
 
 </details>
 
-## Cluster
+## Кластер
 
-Кластер — это узлов. Узлы можно разделить на две категории: управляющая плоскость (Control Plane) и рабочая плоскость (Data Plane). Управляющая плоскость отвечает за запуск всех компонентов Kubernetes. Рабочая плоскость отвечает за выполнение приложения (нашего приложения).
+Кластер — это набор машин, называемых узлами, которые совместно выполняют рабочие нагрузки. На высоком уровне кластер можно рассматривать как две основные части:
+
+- **Control Plane (управляющая плоскость)**: принимает решения о кластере и управляет его желаемым состоянием.
+- **Data Plane (рабочая плоскость)**: выполняет рабочие нагрузки приложений.
 
 ## Control Plane
 
-Управляющая плоскость (Control Plane) — это "мозг" кластера Kubernetes. Она отвечает за управление кластером. Она состоит из узлов управляющей плоскости. Каждый узел управляющей плоскости содержит следующие компоненты:
+Управляющая плоскость отвечает за управление кластером. Узлы управляющей плоскости запускают компоненты, которые хранят состояние, предоставляют API и координируют планирование и согласование:
 
-- **API Server**: Это входная точка для всех команд REST, используемых для управления кластером. Это единственный компонент, который взаимодействует с etcd.
-- **Etcd**: Он хранит текущее состояние кластера. Это похоже на "мозг" кластера.
-- **Scheduler**: Определяет, какой рабочий узел будет лучше всего подходить для развертывания следующих подов, после анализа ресурсов и других параметров. Он не осуществляет планирование подов, а лишь принимает решения.
-- **Controller Manager**: Обнаруживает текущее состояние кластера и поддерживает желаемое состояние подов в рабочем состоянии. Реагирует на запросы, когда необходимо изменить или добавить что-то на рабочий узел.
-- **Cloud Controller Manager**: Общается с API облачного провайдера для создания, удаления и обновления ресурсов.
+- **API Server**: точка входа для операций с кластером. Клиенты, контроллеры и инструменты взаимодействуют с API-сервером.
+- **etcd**: хранит состояние и конфигурационные данные кластера.
+- **Scheduler**: выбирает, на каком узле должен запуститься новый под.
+- **Controller Manager**: запускает циклы согласования, которые приводят фактическое состояние кластера к желаемому.
+- **Cloud Controller Manager**: интегрирует Kubernetes с API облачных провайдеров, когда кластер работает в облаке.
 
 ## Data Plane
 
-Data Plane отвечает за выполнение приложения. Она содержит рабочие узлы. Каждый рабочий узел включает в себя следующие компоненты:
+Рабочая плоскость состоит из рабочих узлов, которые непосредственно выполняют рабочие нагрузки приложений.
 
-- **Kubelet**: Это агент, который работает на каждом узле в кластере. Он следит за тем, чтобы контейнеры работали в поде.
-- **Kube Proxy**: Поддерживает сетевые правила на узле, которые обеспечивают сетевое взаимодействие с вашими подами как из сетевых сессий внутри кластера, так и снаружи.
-- **Container Runtime** - Например, Docker, ContainerD и т.д. Она отвечает за запуск контейнера.
+- **Kubelet**: агент на каждом узле, который следит за тем, чтобы поды работали в соответствии с описанием.
+- **kube-proxy**: поддерживает сетевые правила, чтобы трафик мог доходить до подов и сервисов.
+- **Container runtime (среда выполнения контейнеров)**: запускает контейнеры на узле. Распространённые среды, совместимые с CRI, включают `containerd` и `CRI-O`.
 
 ## CRI - Container Runtime Interface
 
-Это интерфейс плагина, который позволяет Kubelet использовать широкий спектр сред выполнения контейнеров без необходимости повторной компиляции бинарного файла Kubelet. Это стандартный интерфейс между Kubernetes и средами выполнения контейнеров. Ранее Docker был средой выполнения контейнеров по умолчанию для Kubernetes и существовал компонент под названием dockershim, который использовался для общения с Docker. Однако он был удален в версии Kubernetes 1.20, и Docker больше не является средой выполнения контейнеров по умолчанию. Теперь стандартной средой выполнения контейнеров является ContainerD. Популярные варианты включают ContainerD, CRI-O и т.д.
+CRI — это стандартный интерфейс между kubelet и средами выполнения контейнеров. Он позволяет Kubernetes работать с разными средами выполнения без перекомпиляции kubelet.
+
+Исторически многие кластеры использовали Docker через слой совместимости под названием `dockershim`. Dockershim был удалён в Kubernetes 1.24, поэтому современные кластеры обычно используют CRI-совместимые среды выполнения, такие как `containerd` или `CRI-O`, напрямую.
 
 ## CNI - Container Network Interface
 
@@ -50,40 +57,46 @@ Data Plane отвечает за выполнение приложения. Он
 
 ### CSI - Container Storage Interface
 
-Это стандарт для предоставления произвольных блочных и файловых систем хранения контейнеризованным рабочим нагрузкам в Kubernetes. Он используется для обеспечения постоянного хранения для контейнеров. Это стандартный интерфейс между Kubernetes и поставщиками хранения. Популярные варианты включают Rook, OpenEBS и etc.
+CSI — это стандартный интерфейс между Kubernetes и поставщиками хранилищ. Он позволяет Kubernetes работать с различными блочными и файловыми системами хранения для постоянных рабочих нагрузок. Популярные решения в экосистеме включают Rook и OpenEBS.
 
-Custom Resource Definition - это возможность определять собственные ресурсы в Kubernetes. Оно расширяет API Kubernetes.
+Custom Resource Definition (CRD) позволяет определять собственные типы ресурсов в Kubernetes и расширять API.
+
+Полезные ссылки:
+
+- [Kubernetes Concepts](https://kubernetes.io/docs/concepts/)
+- [Container Runtime Interface (CRI)](https://kubernetes.io/docs/concepts/containers/cri/)
+- [Dockershim removal in Kubernetes 1.24](https://kubernetes.io/blog/2021/11/12/are-you-ready-for-dockershim-removal/)
 
 ## Imperative Vs Declarative
 
-- Imperative - When we give a command through CLI to run pod/deployment. For eg: `kubectl run nginx --image=nginx`
+- Императивный подход — когда мы подаём команду через CLI для запуска пода или deployment. Например: `kubectl run nginx --image=nginx`
 
-- Declarative - Creating deployment through YAML file.
+- Декларативный подход — создание deployment через YAML-файл.
 
 ## Resources Configuration File Schema
 
 В общем, файл конфигурации для ресурсов Kubernetes имеет следующую схему:
 
 ```YAML
-apiVersion: # The version of the Kubernetes API you're using
-kind: # The type of object you're creating
-metadata: # Data that helps uniquely identify the object
-spec: # The desired state of the object
+apiVersion: # Версия API Kubernetes, которую вы используете
+kind: # Тип создаваемого объекта
+metadata: # Данные, которые помогают однозначно идентифицировать объект
+spec: # Желаемое состояние объекта
 ```
 
 ## Namespaces
 
-Изолированная среда, где мы можем отдельно группировать ресурсы, такие как базы данных. Также отлично подходит для запуска разных версий приложения. По умолчанию у нас есть пространство имен с названием default. Мы можем создать новое пространство имен, создав файл YAML.
+Пространства имён (namespaces) — это логический способ группировки ресурсов внутри кластера. Они полезны для разделения команд, приложений или окружений, таких как `dev`, `staging` и `prod`.
 
-ПРИМЕЧАНИЕ: По умолчанию пространства имен НЕ обеспечивают никакой безопасности и сетевых границ. Это всего лишь логическое разделение ресурсов.
+ПРИМЕЧАНИЕ: Пространства имён сами по себе не обеспечивают безопасность или сетевую изоляцию автоматически. Это логическая граница, а не полная граница безопасности.
 
-Мы можем создать пространство имен либо с помощью командной строки (CLI), либо с помощью
+Мы можем создать пространство имён из CLI:
 
 ```bash
 kubectl create namespace <namespace-name>
 ```
 
-или декларативным способом, создав файл YAML, а затем применив его.
+или декларативно с помощью YAML-манифеста:
 
 ```yaml
 apiVersion: v1
@@ -92,25 +105,29 @@ metadata:
   name: non-default-namespace
 ```
 
-Мы можем применить его, используя
+Применить его можно командой:
 
 ```bash
 kubectl apply -f <filename>.yaml
 ```
 
-Некоторые полезные команды для пространств имен
+Некоторые полезные команды для пространств имён
 
 ```bash
 kubectl get namespaces # To get all the namespaces
 ```
 
-Мы также можем переключить пространство имен, выполнив
+Мы также можем переключить пространство имён по умолчанию в текущем контексте:
+
+```bash
+kubectl config set-context --current --namespace=<namespace-name>
+```
 
 ## Pods
 
-Наименьшая развертываемая единица» в Kubernetes. Это группа из одного или нескольких контейнеров с общим хранилищем/сетью и спецификацией для запуска контейнеров. Это базовый строительный блок Kubernetes.
+«Наименьшая развертываемая единица» в Kubernetes. Это группа из одного или нескольких контейнеров с общим хранилищем/сетью и спецификацией для запуска контейнеров. Это базовый строительный блок Kubernetes.
 
-Не рекомендуется создавать под напрямую; вместо этого мы должны создать развертывание, которое создаст под за нас. Но мы можем создать под, выполнив
+Обычно лучше создавать рабочую нагрузку более высокого уровня, например Deployment, который управляет подами за вас. Но вы можете создать под напрямую для обучения или устранения неполадок:
 
 ```bash
 kubectl run <pod-name> --image=<image-name>
@@ -122,7 +139,7 @@ kubectl run <pod-name> --image=<image-name>
 apiVersion: v1
 kind: Pod
 metadata:
-  name: ngix-pod
+  name: nginx-pod
   namespace: my-namespace
 spec:
   containers:
@@ -171,11 +188,11 @@ spec:
 
 ### Probes
 
-Проверки (probes) используются для проверки состояния контейнера. Существует три типа проверок:
+Проверки (probes) используются для проверки состояния контейнера. Kubernetes поддерживает три основных типа проверок:
 
-- **Startup Probe**: Он используется для проверки, был ли запущен контейнер. Используется для задержки проверок живучести (liveness) и готовности (readiness) до тех пор, пока контейнер не будет запущен.
-- **Readiness Probe**: Он используется для проверки, готов ли контейнер обслуживать запросы. Если проверка готовности (readiness probe) завершается неуспешно, контейнер не будет получать трафик. Это позволяет отложить поступление трафика до тех пор, пока контейнер не станет готов.
-- **Liveness Probe**:Он используется для проверки, находится ли контейнер в здоровом состоянии и способен ли обслуживать трафик. Если проверка живучести (liveness probe) завершается неуспешно, контейнер будет перезапущен. Это необходимо для перезапуска контейнера, если он находится в нездоровом состоянии.
+- **Startup Probe**: используется для проверки, запущен ли контейнер. Она задерживает проверки живучести (liveness) и готовности (readiness) до тех пор, пока контейнер не будет запущен.
+- **Readiness Probe**: используется для проверки, готов ли контейнер обслуживать трафик. Если проверка готовности (readiness probe) завершается неуспешно, контейнер не будет получать трафик. Она задерживает поступление трафика до тех пор, пока контейнер не станет готов.
+- **Liveness Probe**: используется для проверки, находится ли контейнер в здоровом состоянии и способен ли обслуживать трафик. Если проверка живучести (liveness probe) завершается неуспешно, контейнер будет перезапущен. Это необходимо для перезапуска контейнера, если он находится в нездоровом состоянии.
 
 #### Startup Probe
 
@@ -237,9 +254,9 @@ livenessProbe:
 
 ### Sidecar Containers
 
-Целью контейнеров sidecar является расширение и поддержка основного контейнера. Они работают совместно с основным контейнером. Они используются для расширения функциональности основного контейнера и предоставления дополнительного функционала. Например, для логирования, мониторинга и etc.
+Целью контейнеров sidecar является расширение и поддержка основного контейнера. Они работают совместно с основным контейнером. Они используются для расширения функциональности основного контейнера и предоставления дополнительного функционала. Например, для логирования, мониторинга и т.д.
 
-Эти команды помогут вам эффективно управлять подами в Kubernetes.
+Некоторые полезные команды для работы с подами:
 
 ```bash
 Kubectl pods -A # (-all-namespaces) To get all the pods in all the namespaces
@@ -250,7 +267,7 @@ kubectl port-forward svc/<service-name> <localhost-port>:<service-port> # To for
 
 ## ReplicaSet
 
-это контроллер, который обеспечивает наличие заданного количества реплик подов в работе в любое время. Он является более высокой абстракцией, которая управляет подами. ReplicaSet заменяет Replication Controller и является частью развертывания (Deployment) в Kubernetes.
+ReplicaSet — это контроллер, который обеспечивает наличие заданного количества реплик подов в работе в любое время. Он является более высокой абстракцией, которая управляет подами. ReplicaSet заменяет Replication Controller и является частью развертывания (Deployment) в Kubernetes.
 
 NOTE: В отличие от подов, мы не создаем ReplicaSet напрямую; вместо этого мы создаем развертывание (Deployment), которое автоматически создаст ReplicaSet и соответствующие поды для нас.
 
@@ -327,17 +344,17 @@ spec:
 
 Служит внутренним балансировщиком нагрузки между репликами. Он использует метки подов для определения, какие поды обслуживать.
 
-### Types of Services
+### Типы сервисов
 
-- **ClusterIP**: For inter communication of pods (Internal to Cluster)
-- **NodePort**: Listen on each node in a cluster.
-- **LoadBalancer**: Expose the service externally using the cloud provider's load balancer.
+- **ClusterIP**: для взаимодействия подов между собой (внутри кластера).
+- **NodePort**: прослушивает порт на каждом узле кластера.
+- **LoadBalancer**: публикует сервис наружу через балансировщик нагрузки облачного провайдера.
 
-Couple of things to NOTE:
+Несколько моментов, на которые стоит обратить внимание:
 
-- ClusterIP is the default type of service. It exposes the service on a cluster-internal IP. It is only reachable from within the cluster.
-- If we don't specify the `targetPort` in the service, it will default to the same value as the `port`.
-- If we don't specify the `nodePort` in the service, Kubernetes will assign a port within the range of 30000-32767.
+- ClusterIP — это тип сервиса по умолчанию. Он публикует сервис на внутреннем IP-адресе кластера, и он доступен только изнутри кластера.
+- Если не указать `targetPort` в сервисе, он будет по умолчанию равен значению `port`.
+- Если не указать `nodePort` в сервисе, Kubernetes назначит порт из диапазона 30000–32767.
 
 #### ClusterIP
 
@@ -395,7 +412,7 @@ spec:
       targetPort: 80 # Port the container is listening on (if unset, defaults to equal port value)
 ```
 
-Example of multi-port service
+Пример сервиса с несколькими портами
 
 ```yaml
 apiVersion: v1
@@ -526,13 +543,13 @@ spec:
 
 StatefulSet — это контроллер, который управляет развертыванием и масштабированием набора подов. Он используется для запуска приложений с состоянием. StatefulSet подходит для приложений, которые требуют стабильных, уникальных сетевых идентификаторов, стабильного хранилища и упорядоченного развертывания и масштабирования.
 
-serviceName используется для создания безголового сервиса. Мы должны создать безголовый сервис при создании StatefulSet. Цель безголового сервиса заключается в том, чтобы клиент мог подключаться к любому поду по своему выбору.
+`serviceName` используется для создания безголового сервиса. Мы должны создать безголовый сервис при создании StatefulSet. Цель безголового сервиса заключается в том, чтобы клиент мог подключаться к любому поду по своему выбору.
 
-Еще одним замечательным аспектом StatefulSet является предсказуемость имен подов. Имя пода имеет формат -. Порядковый номер — это уникальное число, присвоенное каждому поду. Таким образом, в приведенном ниже примере имена подов будут nginx-statefulset-0, nginx-statefulset-1, nginx-statefulset-2.
+Еще одним замечательным аспектом StatefulSet является предсказуемость имен подов. Имя пода имеет формат `<statefulset-name>-<ordinal>`. Порядковый номер — это уникальное число, присвоенное каждому поду. Таким образом, в приведенном ниже примере имена подов будут `nginx-statefulset-0`, `nginx-statefulset-1`, `nginx-statefulset-2`.
 
-Аналогичная схема именования используется и для PVC. Имя PVC имеет формат --. Таким образом, в приведенном ниже примере имена PVC будут data-nginx-statefulset-0, data-nginx-statefulset-1, data-nginx-statefulset-2.
+Аналогичная схема именования используется и для PVC. Имя PVC имеет формат `<volume-claim-template-name>-<statefulset-name>-<ordinal>`. Таким образом, в приведенном ниже примере имена PVC будут `data-nginx-statefulset-0`, `data-nginx-statefulset-1`, `data-nginx-statefulset-2`.
 
-Конфигурация, приведенная ниже, работает таким образом, что init-контейнер запускается перед основным контейнером. Init-контейнер заполняет файл HTML по умолчанию в объеме, а затем основной контейнер использует этот объем для обслуживания HTML-файла.
+Конфигурация, приведенная ниже, работает таким образом, что init-контейнер запускается перед основным контейнером. Init-контейнер заполняет файл HTML по умолчанию в томе, а затем основной контейнер использует этот том для обслуживания HTML-файла.
 
 ```yaml
 apiVersion: apps/v1
@@ -597,10 +614,10 @@ ConfigMap позволяет отделить конфигурацию, зави
 
 Существует два основных способа создания ConfigMap:
 
-- Property like Keys (MYAPP_COLOR=blue) - This is useful when we want to use the ConfigMap as environment variables.
-- File like Keys `(conf.yml = <multi line string>)` - This is useful when we want to use the ConfigMap as a file.
+- Ключи в виде свойств (MYAPP_COLOR=blue) — удобно, когда мы хотим использовать ConfigMap как переменные окружения.
+- Ключи в виде файлов `(conf.yml = <многострочная строка>)` — удобно, когда мы хотим использовать ConfigMap как файл.
 
-File like style:
+Стиль с ключами в виде файлов:
 
 ```yaml
 apiVersion: v1
@@ -631,7 +648,7 @@ spec:
         name: file-like-keys
 ```
 
-Property like style:
+Стиль с ключами в виде свойств:
 
 ```yaml
 apiVersion: v1
@@ -666,7 +683,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: string-data
-type: Opaque # This is the default type
+type: Opaque # Это тип по умолчанию
 stringData:
   foo: bar
   baz: qux
@@ -685,21 +702,21 @@ spec:
             name: string-data
 ```
 
-> Note: the secret value can be `base64` encoded, like `cHJhZHVtbmE`
+> Примечание: значение секрета может быть закодировано в `base64`, например `cHJhZHVtbmE`.
 
-To encode a value in base64, we can use the below command
+Чтобы закодировать значение в base64, можно использовать следующую команду:
 
 ```bash
 echo -n "value" | base64
 ```
 
-To decode a value in base64, we can use the below command
+Чтобы декодировать значение из base64, можно использовать следующую команду:
 
 ```bash
 echo cHJhZHVtbmE | base64 --decode
 ```
 
-Also, there is specific type of secret is `dockerconfigjson` which is used to store the docker registry credentials. It is used to store the docker registry credentials in a secret.
+Также существует специальный тип секрета `dockerconfigjson`, который используется для хранения учётных данных реестра Docker.
 
 ```yaml
 apiVersion: v1
@@ -712,7 +729,7 @@ data:
     <base64 encoded docker config.json>
 ```
 
-Kubectl has a build-in command to create a secret from the docker config.json file.
+В kubectl есть встроенная команда для создания секрета из файла docker config.json.
 
 ```sh
 kubectl create secret docker-registry dockerconfigjson --docker-server=<server> --docker-username=<username> --docker-password=<password> --docker-email=<email>
@@ -804,9 +821,9 @@ spec:
 - **ReadOnlyMany**: Том может быть смонтирован в режиме только для чтения множеством узлов.
 - **ReadWriteMany**: Том может быть смонтирован с правами чтения и записи множеством узлов.
 
-Some more important points to note:
+Ещё несколько важных моментов:
 
-- In case of `deployment` if we specify PVC all the pods will share the same PVC. But in of `statefulset`, each pod will have its own independent PVC.
+- В случае `deployment`, если указать PVC, все поды будут использовать один и тот же PVC. Но в случае `statefulset` каждый под будет иметь собственный независимый PVC.
 
 ```yaml
 apiVersion: v1
@@ -854,7 +871,7 @@ spec:
 ```yaml
 apiVersion: apps/v1
 kind: StatefulSet
----
+...
 spec:
   persistentVolumeReclaimPolicy:
     whenDeleted: Retain #
@@ -959,7 +976,7 @@ kubectl config use-context <context-name>
 
 Kustomize — это инструмент для настройки конфигураций Kubernetes. Он используется для кастомизации, обмена и управления конфигурациями Kubernetes. Kustomize позволяет управлять конфигурациями Kubernetes декларативным способом. Он может помочь нам достичь различных конфигураций для разных окружений.
 
-Check out [Kustomize Page](./tools/kustomize/introduction.md) for more details.
+Подробнее см. [страницу Kustomize](./tools/kustomize/introduction.md).
 
 ## Cluster Upgrade Process
 
@@ -982,8 +999,6 @@ CI/CD — это практика, которая позволяет автом�
 ## Continuos Deployment
 
 CD — это практика, которая позволяет автоматизировать процесс доставки программного обеспечения, и более конкретно — как мы можем внести эти изменения в кластер Kubernetes. Она используется для автоматизации таких процессов, как:
-
-It is used to automate the process like:
 
 - Обновление ресурсов Kubernetes
 - Применение обновленных манифестов к кластеру
@@ -1231,12 +1246,12 @@ spec:
 <service-name>.<namespace>.svc.cluster.local
 ```
 
-## What's next?
+## Что дальше?
 
-- [Commands](./commands.md) - Learn about the commands that you can use with Kubernetes.
-- [Learning Resources](./learning-resources.md) - Learn more about Kubernetes with these resources.
-- [Other Resources](./other-resources.md) - Explore more about Kubernetes with these resources.
-- [Playground](./playground.md) - Play with Kubernetes in the browser.
+- [Команды](./commands.md) — изучите команды, которые можно использовать с Kubernetes.
+- [Учебные ресурсы](./learning-resources.md) — узнайте больше о Kubernetes с помощью этих ресурсов.
+- [Другие ресурсы](./other-resources.md) — исследуйте Kubernetes глубже с помощью этих ресурсов.
+- [Playground](./playground.md) — попробуйте Kubernetes прямо в браузере.
 
 <!--
 ## CustomResourceDefinition (CRD)

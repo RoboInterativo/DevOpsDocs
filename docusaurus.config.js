@@ -21,6 +21,7 @@ const config = {
       onBrokenMarkdownLinks: 'warn',
     },
   },
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en','ru'],
@@ -92,6 +93,10 @@ const config = {
         },
         items: [
           {
+            type: 'localeDropdown',
+            position: 'left',
+          },          
+          {
             to: '/',
             label: 'Start Here',
             position: 'left',
@@ -123,7 +128,7 @@ const config = {
           },
           {
             href: 'https://github.com/Pradumnasaraf/DevOps',
-            labUPDATEel: 'GitHub',
+            label: 'GitHub',
             position: 'right',
           },
           {

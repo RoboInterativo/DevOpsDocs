@@ -9,7 +9,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'DevOps',
-  tagline: 'Learn DevOps',
+  tagline: 'Practical DevOps notes, examples, and learning paths',
   favicon: 'img/favicon.ico',
   url: 'https://devops.pradumnasaraf.dev',
   baseUrl: '/',
@@ -74,6 +74,15 @@ const config = {
         // searchParameters: {},
         //... other algolia configuration
       },
+      colorMode: {
+        respectPrefersColorScheme: true,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
+      },
       image: 'img/devops-repo-card.png',
       navbar: {
         title: 'DevOps',
@@ -83,17 +92,48 @@ const config = {
         },
         items: [
           {
-          type: 'localeDropdown',
-          position: 'left',
+            to: '/',
+            label: 'Start Here',
+            position: 'left',
+          },
+          {
+            to: '/qna',
+            label: 'Q&A',
+            position: 'left',
+          },
+          {
+            to: '/docker',
+            label: 'Docker',
+            position: 'left',
+          },
+          {
+            to: '/kubernetes',
+            label: 'Kubernetes',
+            position: 'left',
+          },
+          {
+            to: '/terraform',
+            label: 'Terraform',
+            position: 'left',
+          },
+          {
+            to: '/github-actions',
+            label: 'GitHub Actions',
+            position: 'left',
           },
           {
             href: 'https://github.com/Pradumnasaraf/DevOps',
-            label: 'GitHub',
+            labUPDATEel: 'GitHub',
             position: 'right',
           },
           {
-            href: 'https://twitter.com/pradumna_Saraf',
-            label: 'Twitter',
+            href: 'https://x.com/pradumna_Saraf',
+            label: 'X',
+            position: 'right',
+          },
+          {
+            to: '/feedback',
+            label: 'Contribute',
             position: 'right',
           },
         ],
@@ -105,6 +145,63 @@ const config = {
           href: 'https://devops.pradumnasaraf.dev',
         },
         style: 'light',
+        links: [
+          {
+            title: 'Start',
+            items: [
+              {
+                label: 'Introduction',
+                to: '/',
+              },
+              {
+                label: 'Q&A',
+                to: '/qna',
+              },
+              {
+                label: 'Feedback',
+                to: '/feedback',
+              },
+            ],
+          },
+          {
+            title: 'Popular Topics',
+            items: [
+              {
+                label: 'Docker',
+                to: '/docker',
+              },
+              {
+                label: 'Kubernetes',
+                to: '/kubernetes',
+              },
+              {
+                label: 'Terraform',
+                to: '/terraform',
+              },
+              {
+                label: 'GitHub Actions',
+                to: '/github-actions',
+              },
+            ],
+          },
+          {
+            title: 'Community',
+            items: [
+              {
+                label: 'GitHub Repository',
+                href: 'https://github.com/Pradumnasaraf/DevOps',
+              },
+              {
+                label: 'Open an Issue',
+                href: 'https://github.com/Pradumnasaraf/DevOps/issues/new/choose',
+              },
+              {
+                label: 'Follow Pradumna',
+                href: 'https://x.com/pradumna_Saraf',
+              },
+            ],
+          },
+        ],
         copyright: `Copyright © ${new Date().getFullYear()} Pradumna Saraf`,
       },
       prism: {
